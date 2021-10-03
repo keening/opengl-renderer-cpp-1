@@ -1,1 +1,4 @@
-build
+.vscode
+include/stb_image.h
+build/
+renderer
