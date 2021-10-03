@@ -1,0 +1,1 @@
+-IC:/renderer-cpp/include -IC:/deps/sdl2/include -IC:/deps/glad/include -I/glm -isystem C:/deps/glm

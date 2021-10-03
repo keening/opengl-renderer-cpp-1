@@ -1,0 +1,32 @@
+[
+{
+  "directory": "C:/renderer-cpp/build",
+  "command": "c:\\msys64\\mingw64\\bin\\clang++.exe  @CMakeFiles/renderer.dir/includes_CXX.rsp -g -o CMakeFiles\\renderer.dir\\src\\main.cpp.obj -c C:\\renderer-cpp\\src\\main.cpp",
+  "file": "C:/renderer-cpp/src/main.cpp"
+},
+{
+  "directory": "C:/renderer-cpp/build",
+  "command": "c:\\msys64\\mingw64\\bin\\clang++.exe  @CMakeFiles/renderer.dir/includes_CXX.rsp -g -o CMakeFiles\\renderer.dir\\src\\display.cpp.obj -c C:\\renderer-cpp\\src\\display.cpp",
+  "file": "C:/renderer-cpp/src/display.cpp"
+},
+{
+  "directory": "C:/renderer-cpp/build",
+  "command": "c:\\msys64\\mingw64\\bin\\clang++.exe  @CMakeFiles/renderer.dir/includes_CXX.rsp -g -o CMakeFiles\\renderer.dir\\src\\shader.cpp.obj -c C:\\renderer-cpp\\src\\shader.cpp",
+  "file": "C:/renderer-cpp/src/shader.cpp"
+},
+{
+  "directory": "C:/renderer-cpp/build",
+  "command": "c:\\msys64\\mingw64\\bin\\clang++.exe  @CMakeFiles/renderer.dir/includes_CXX.rsp -g -o CMakeFiles\\renderer.dir\\src\\mesh.cpp.obj -c C:\\renderer-cpp\\src\\mesh.cpp",
+  "file": "C:/renderer-cpp/src/mesh.cpp"
+},
+{
+  "directory": "C:/renderer-cpp/build",
+  "command": "c:\\msys64\\mingw64\\bin\\clang++.exe  @CMakeFiles/renderer.dir/includes_CXX.rsp -g -o CMakeFiles\\renderer.dir\\src\\texture.cpp.obj -c C:\\renderer-cpp\\src\\texture.cpp",
+  "file": "C:/renderer-cpp/src/texture.cpp"
+},
+{
+  "directory": "C:/renderer-cpp/build",
+  "command": "c:\\msys64\\mingw64\\bin\\clang.exe  @CMakeFiles/renderer.dir/includes_C.rsp -g -o CMakeFiles\\renderer.dir\\C_\\deps\\glad\\src\\glad.c.obj -c C:\\deps\\glad\\src\\glad.c",
+  "file": "C:/deps/glad/src/glad.c"
+}
+]
