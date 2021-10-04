@@ -11,6 +11,7 @@ set(SOURCES
     src/shader.cpp
     src/mesh.cpp
     src/texture.cpp
+    src/application.cpp
     ${GLAD_DIR}/src/glad.c
     )
 set(HEADERS
@@ -18,6 +19,7 @@ set(HEADERS
     include/shader.hpp
     include/mesh.hpp
     include/texture.hpp
+    include/application.hpp
     ) 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
