@@ -9,6 +9,7 @@ public:
 
     void setup();
     void present();
+    void clear();
     int get_width() { return window_width; }
     int get_height() { return window_height; }
 
