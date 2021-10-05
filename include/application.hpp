@@ -9,6 +9,6 @@ class application
         void main_loop();
 
     private:
-        display dsp;
+        display d;
         bool is_running = false;
 };
