@@ -20,7 +20,8 @@ texture::texture(const char *texture_path)
 
     int width, height, nr_channels;
 
-    stbi_set_flip_vertically_on_load(true);  
+    /* This doesnt seem to be necessary, keep it just in case.
+    stbi_set_flip_vertically_on_load(true); */  
 
     unsigned char *data = stbi_load(texture_path, &width, &height, &nr_channels, 0);
 
