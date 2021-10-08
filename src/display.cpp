@@ -13,7 +13,7 @@ display::display()
     {
         this->window = SDL_CreateWindow(this->window_title,
         SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
-        this->window_width, this->window_height, SDL_WINDOW_OPENGL);
+        this->window_width, this->window_height, SDL_WINDOW_OPENGL | SDL_WINDOW_MOUSE_CAPTURE);
         if (!this->window)
         {
             std::cout << "Failed to create SDL window: " << SDL_GetError() << std::endl;
@@ -24,9 +24,11 @@ display::display()
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, 
-            SDL_GL_CONTEXT_PROFILE_CORE);
+                SDL_GL_CONTEXT_PROFILE_CORE);
 
             this->gl_context = SDL_GL_CreateContext(this->window);
+            SDL_CaptureMouse(SDL_TRUE);
+            SDL_ShowCursor(SDL_DISABLE);
             if (!this->gl_context)
             {
                 std::cout << "Failed to create GL context: " << SDL_GetError() << std::endl;
