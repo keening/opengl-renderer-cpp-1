@@ -84,7 +84,7 @@ void application::main_loop()
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)d.get_width() / (float)d.get_height(), 0.1f, 100.0f);
     s.set_mat4("projection", projection); 
     
-    camera cam;
+    camera cam(d.get_width(), d.get_height());
     float current_frame, delta_time, last_frame;
 
     while (this->is_running) 
