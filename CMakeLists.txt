@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.10)
 project(renderer)
 
-set(glm_DIR C:/deps/glm/cmake/glm)
-set(SDL2_INCLUDE_DIR C:/deps/sdl2/include)
-set(SDL2_LIB_DIR C:/deps/sdl2/lib/x64)
-set(LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib)
+set(LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/vendor)
 set(GLAD_DIR ${LIBRARY_DIR}/glad)
 set(STB_DIR ${LIBRARY_DIR}/stb)
+set(glm_DIR ${LIBRARY_DIR}/glm/cmake/glm)
+set(STB_DIR ${LIBRARY_DIR}/stb)
+set(SDL2_DIR ${LIBRARY_DIR}/sdl2)
 
 set(SOURCES
     src/main.cpp
@@ -28,12 +28,12 @@ set(HEADERS
     ) 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${SDL2_INCLUDE_DIR}
+    ${SDL2_DIR}/include
     ${GLAD_DIR}/include
     ${GLM_DIR}/glm
     ${LIBRARY_DIR}
     )
-link_directories(${SDL2_LIB_DIR})
+link_directories(${SDL2_DIR}/lib)
 add_executable(
     renderer 
     ${SOURCES} 

@@ -27,8 +27,9 @@ display::display()
                 SDL_GL_CONTEXT_PROFILE_CORE);
 
             this->gl_context = SDL_GL_CreateContext(this->window);
-            SDL_CaptureMouse(SDL_TRUE);
-            SDL_ShowCursor(SDL_DISABLE);
+
+            SDL_SetWindowGrab(this->window, SDL_TRUE);
+
             if (!this->gl_context)
             {
                 std::cout << "Failed to create GL context: " << SDL_GetError() << std::endl;

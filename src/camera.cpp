@@ -1,8 +1,8 @@
 #include <camera.hpp>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 camera::camera(int sw, int sh) : yaw(-90.0f), fov(45.0f), 
-    is_initial_move(true), sens(0.6f), speed(2.5f)
+    is_initial_move(true), sens(0.1f), speed(2.5f)
 {
     this->position = glm::vec3(0.0f, 0.0f, 3.0f);
     this->front = glm::vec3(0.0f, 0.0f, -1.0f);
