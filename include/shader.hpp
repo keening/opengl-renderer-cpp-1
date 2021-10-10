@@ -12,6 +12,7 @@ public:
 
     void use();
 	void set_mat4(const std::string &name, const glm::mat4 &mat);
+    void set_vec3(const std::string &name, const glm::vec3 &vec);
     int get_id() { return id; }   
 
 private:

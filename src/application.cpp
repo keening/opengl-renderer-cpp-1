@@ -16,9 +16,10 @@ application::~application() {}
 
 void application::main_loop()
 {
-    shader s("../shaders/vertex.glsl", "../shaders/frag.glsl");
+    shader box_shader("./shaders/box_vert.glsl", "./shaders/box_frag.glsl");
+    shader lamp_shader("./shaders/lamp_vert.glsl", "./shaders/lamp_frag.glsl");
 
-    std::vector<float> vertices = 
+    std::vector<float> cube_verts = 
     {
          -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
          0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
@@ -62,30 +63,17 @@ void application::main_loop()
         -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
         -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
     };
-
-    glm::vec3 cubePositions[] = 
-    {
-        glm::vec3( 0.0f,  0.0f,  0.0f),
-        glm::vec3( 2.0f,  5.0f, -15.0f),
-        glm::vec3(-1.5f, -2.2f, -2.5f),
-        glm::vec3(-3.8f, -2.0f, -12.3f),
-        glm::vec3( 2.4f, -0.4f, -3.5f),
-        glm::vec3(-1.7f,  3.0f, -7.5f),
-        glm::vec3( 1.3f, -2.0f, -2.5f),
-        glm::vec3( 1.5f,  2.0f, -2.5f),
-        glm::vec3( 1.5f,  0.2f, -1.5f),
-        glm::vec3(-1.3f,  1.0f, -1.5f)
-    };
-
-    mesh m(vertices);
-    texture t("../assets/default.jpg");
-
-    s.use();
-    glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)d.get_width() / (float)d.get_height(), 0.1f, 100.0f);
-    s.set_mat4("projection", projection); 
     
+    mesh box(cube_verts);
+    mesh lamp(cube_verts);
+    //texture t("../assets/default.jpg");
+
+    box_shader.use();
+
     camera cam(d.get_width(), d.get_height());
     float current_frame, delta_time, last_frame;
+
+    glm::vec3 light_pos(1.2f, 1.0f, 2.0f);
 
     while (this->is_running) 
     {            
@@ -95,20 +83,30 @@ void application::main_loop()
 
         cam.handle_input(delta_time);
         d.clear();
-        s.use();
 
+        box_shader.use();
+        box_shader.set_vec3("object_color", glm::vec3(1.0f, 0.5f, 0.31f));
+        box_shader.set_vec3("light_color", glm::vec3(1.0f, 1.0f, 1.0f));
+
+        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)d.get_width() / (float)d.get_height(), 0.1f, 100.0f);
         glm::mat4 view = glm::lookAt(cam.get_pos(), cam.get_pos() + cam.get_front(), cam.get_up());
-        s.set_mat4("view", view);
+        box_shader.set_mat4("projection", projection); 
+        box_shader.set_mat4("view", view);
 
-        for (unsigned int i = 0; i < 10; i++)
-        {
-            glm::mat4 model = glm::mat4(1.0f);
-            model = glm::translate(model, cubePositions[i]);
-            float angle = 20.0f * i;
-            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-            s.set_mat4("model", model);
-            glDrawArrays(GL_TRIANGLES, 0, 36);
-        }
+        glm::mat4 model = glm::mat4(1.0f);
+        box_shader.set_mat4("model", model);
+        
+        box.draw();
+
+        lamp_shader.use();
+        lamp_shader.set_mat4("projection", projection); 
+        lamp_shader.set_mat4("view", view);
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, light_pos);
+        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
+        lamp_shader.set_mat4("model", model);
+
+        lamp.draw();
         d.present();
     }
 }
