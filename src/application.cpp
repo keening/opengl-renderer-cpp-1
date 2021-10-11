@@ -16,8 +16,8 @@ application::~application() {}
 
 void application::main_loop()
 {
-    shader box_shader("./shaders/box_vert.glsl", "./shaders/box_frag.glsl");
-    shader lamp_shader("./shaders/lamp_vert.glsl", "./shaders/lamp_frag.glsl");
+    shader box_shader("../shaders/box_vert.glsl", "../shaders/box_frag.glsl");
+    shader lamp_shader("../shaders/lamp_vert.glsl", "../shaders/lamp_frag.glsl");
 
     std::vector<float> cube_verts = 
     {

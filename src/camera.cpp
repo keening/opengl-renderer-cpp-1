@@ -44,27 +44,32 @@ void camera::handle_input(float delta)
             case SDL_MOUSEMOTION:
                 handle_mouse(event);
                 break;
+            case SDL_QUIT:
+                SDL_Quit();
+                break;
+
         }
     }
 }
 
 void camera::handle_mouse(SDL_Event e)
 {
-    if (this->is_initial_move)
+    int mouse_rel_x, mouse_rel_y;
+
+    if (!this->is_initial_move)
     {
-        last_x = e.motion.x;
-        last_y = e.motion.y;
+        mouse_rel_x = e.motion.xrel;
+        mouse_rel_y = e.motion.yrel;
+    }
+    else
+    {
         this->is_initial_move = false;
+        mouse_rel_x = 0;
+        mouse_rel_y = 0;
     }
 
-    int x_offset = e.motion.x - last_x;
-    int y_offset = last_y - e.motion.y;
-    last_x = e.motion.x;
-    last_y = e.motion.y;
-    x_offset *= sens;
-    y_offset *= sens;
-    this->yaw += x_offset;
-    this->pitch += y_offset;
+    this->yaw += mouse_rel_x * this->sens;
+    this->pitch -= mouse_rel_y * this->sens;
 
     if (this->pitch > 89.0f)
         this->pitch = 89.0f;

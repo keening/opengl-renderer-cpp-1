@@ -13,7 +13,7 @@ display::display()
     {
         this->window = SDL_CreateWindow(this->window_title,
         SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
-        this->window_width, this->window_height, SDL_WINDOW_OPENGL | SDL_WINDOW_MOUSE_CAPTURE);
+        this->window_width, this->window_height, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_MOUSE_FOCUS);
         if (!this->window)
         {
             std::cout << "Failed to create SDL window: " << SDL_GetError() << std::endl;
@@ -29,6 +29,7 @@ display::display()
             this->gl_context = SDL_GL_CreateContext(this->window);
 
             SDL_SetWindowGrab(this->window, SDL_TRUE);
+            SDL_SetRelativeMouseMode(SDL_TRUE);
 
             if (!this->gl_context)
             {
