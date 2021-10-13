@@ -1,14 +1,14 @@
 #pragma once
-#include <display.hpp>
+#include <Window.hpp>
 
-class application
+class Application
 {
     public:
-        application();
-        ~application();
-        void main_loop();
+        Application();
+        ~Application();
+        void MainLoop();
 
     private:
-        display d;
-        bool is_running = false;
+        Window mainWindow;
+        bool isRunning = false;
 };
