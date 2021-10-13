@@ -1,20 +1,25 @@
 #include <glm/glm.hpp>
-#include <display.hpp>
 
-class camera
-{
+class InputManager;
+
+class Camera {
     public:
-        camera();
-        camera(int sw, int sh);
-        ~camera();
+        Camera();
+        ~Camera();
 
-        glm::vec3 get_pos() { return position; }
-        glm::vec3 get_front() { return front; }
-        glm::vec3 get_up() { return up; }
-        void handle_input(float delta);
-        void handle_mouse(SDL_Event e);
+        
+        void ProcessInput(float delta);
+        void HandleMouse();
+
+        void SetController(InputManager controller);
+        InputManager* GetController() { return this->cameraController; }
+        glm::vec3 GetPosVec()   { return position; }
+        glm::vec3 GetFrontVec() { return front; }
+        glm::vec3 GetUpVec()    { return up; }
+
     private:
+        InputManager* cameraController;
+
         glm::vec3 position, front, up, right;
-        float yaw, pitch, speed, fov, last_x, last_y, sens, velocity;
-        bool is_initial_move;
+        float yaw, pitch, speed, fov, sensitivity, velocity;
 };
