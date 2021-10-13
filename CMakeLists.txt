@@ -10,21 +10,23 @@ set(SDL2_DIR ${LIBRARY_DIR}/sdl2)
 
 set(SOURCES
     src/main.cpp
-    src/display.cpp
-    src/shader.cpp
-    src/mesh.cpp
-    src/texture.cpp
-    src/application.cpp
-    src/camera.cpp
+    src/Window.cpp
+    src/Shader.cpp
+    src/Mesh.cpp
+    src/Texture.cpp
+    src/Application.cpp
+    src/Camera.cpp
+    src/InputManager.cpp
     ${GLAD_DIR}/src/glad.c
     )
 set(HEADERS
-    include/display.hpp
+    include/window.hpp
     include/shader.hpp
-    include/mesh.hpp
-    include/texture.hpp
-    include/application.hpp
-    include/camera.hpp
+    include/Mesh.hpp
+    include/Texture.hpp
+    include/Application.hpp
+    include/Camera.hpp
+    include/InputManager.hpp
     ) 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
