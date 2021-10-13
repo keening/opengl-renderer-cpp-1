@@ -1,17 +1,16 @@
 #pragma once
 #include <vector>
 
-class mesh 
-{
-public:
-    mesh();
-	mesh(std::vector<float> vertices);
-    ~mesh();
+class Mesh {
+    public:
+        Mesh();
+        Mesh(std::vector<float> vertices);
+        ~Mesh();
 
-    void draw();
-    void setup_vbo();
+        void Draw();
+        void SetupVBO();
 
-private:
-    int vbo, vao;
-    std::vector<float> vertices = { 0 };
+    private:
+        int vbo, vao;
+        std::vector<float> vertices = { 0 };
 };

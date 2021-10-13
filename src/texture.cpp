@@ -1,11 +1,12 @@
-#include <texture.hpp>
-#include <iostream>
-#include <glad/glad.h>
+#include <Texture.hpp>
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb/stb_image.h>
 
-texture::texture(const char *texture_path) 
+#include <glad/glad.h>
+#include <iostream>
+
+Texture::Texture(const char *texturePath) 
 {
     GLuint texture = 0;
     glGenTextures(1, &texture);
@@ -18,18 +19,20 @@ texture::texture(const char *texture_path)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    int width, height, nr_channels;
+    int width, height, nrChannels;
 
     /* This doesnt seem to be necessary, keep it just in case.
     stbi_set_flip_vertically_on_load(true); */  
 
-    unsigned char *data = stbi_load(texture_path, &width, &height, &nr_channels, 0);
+    unsigned char *data = stbi_load(texturePath, &width, &height, 
+                                    &nrChannels, 0);
 
     if (data) {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 
+                     0, GL_RGB, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
     } else {
-        std::cout << "Failed to load texture: " << texture_path << std::endl;
+        std::cout << "Failed to load texture: " << texturePath << std::endl;
     }
 
     stbi_image_free(data);
@@ -38,4 +41,4 @@ texture::texture(const char *texture_path)
     glBindTexture(GL_TEXTURE_2D, texture);
 }
 
-texture::~texture() {}
+Texture::~Texture() {}

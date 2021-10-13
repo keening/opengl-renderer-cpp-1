@@ -1,10 +1,9 @@
 #pragma once
 
-class texture 
-{
-public:
-    texture(const char *texture_path);
-    ~texture();
+class Texture {
+    public:
+        Texture(const char *texturePath);
+        ~Texture();
 
-private:
+    private:
 };
