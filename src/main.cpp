@@ -1,9 +1,9 @@
-#include <application.hpp>
+#include <Application.hpp>
 
 int main(int argc, char *argv[]) 
 {
-    application app;
-    app.main_loop();
+    Application app;
+    app.MainLoop();
     
     return 0;
 }
